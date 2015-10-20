@@ -133,6 +133,35 @@ This call will be ignored if the user is using the Authy Mobile App. If you ensu
       # the user doesn't exist
     end
 ```
+## Phone Verification && Info
+
+Authy has an API to verify users via phone calls or sms. Also, user phone information can be gethered
+for support and verification purposes.
+
+### Phone Verification Start
+
+In order to start a phone verification, we ask the API to send a token to the user via sms or call:
+
+    Authy::PhoneIntelligence.verification_start(phone_number: '111-111-1111', country_code: '1', via: 'sms');
+
+Optionally you can specify the language that you prefer the phone verification message to be sent. Supported
+languages include: English (`en`), Spanish (`es`), Portuguese (`pt`), German (`de`), French (`fr`) and
+Italian (`it`). If not specified, English will be used.
+
+    Authy::PhoneIntelligence.verification_start(phone_number: '111-111-1111', country_code: '1', via: 'sms', locale: 'es');
+    # This will send a message in spanish
+
+### Phone Verification Check
+
+Once you get the verification from user, you can check if it's valid with:
+
+    Authy::PhoneIntelligence.verification_check(phone_number: '111-111-1111', country_code: '1', verification_code: '111111');
+
+### Phone Info
+
+If you want to gather additional information about user phone, use phones info.
+
+    Authy::PhoneIntelligence.info(phone_number: '111-111-1111', country_code: '1');
 
 ### Contributing to authy
 
