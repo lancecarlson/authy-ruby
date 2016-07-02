@@ -139,9 +139,10 @@ This call will be ignored if the user is using the Authy Mobile App. If you ensu
 ### Starting a phone verification
 
 `Authy::PhoneVerification.start` takes a country code, phone number and a method (sms or call) to deliver the code.
+Optionally, you can include the `locale` parameter to send the message in one of the [supported languages](http://docs.authy.com/phone_verification.html#sending-the-verification-code).
 
 ```ruby
-response = Authy::PhoneVerification.start(via: "sms", country_code: 1, phone_number: "111-111-1111")
+response = Authy::PhoneVerification.start(via: "sms", country_code: 1, phone_number: "111-111-1111", locale: 'en')
 if response.ok?
   # verification was started
 end
